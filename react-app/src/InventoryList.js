@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import AppNavbar from "./Navbar"
 import { Button, ButtonGroup, Container, Table } from "reactstrap";
-import { link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class InventoryList extends Component {
     constructor(props) {
@@ -14,7 +14,9 @@ class InventoryList extends Component {
     componentDidMount() {
         this.setState({isLoading: true})
 
-        fetch('api/inventories')
+        fetch('/api/inventories')
+//         .then(res => res.text())        
+//   .then(text => console.log(text))  
         .then(response => response.json())
         .then(data => this.setState({inventories: data, isLoading: false}));
     }
@@ -28,7 +30,7 @@ class InventoryList extends Component {
         })
         console.log("Remove Done!");
         //update inventory state minus removed item
-        let updateInventories =
+        let updatedInventories =
             [...this.state.inventories].filter(i => i._id !== id);
             this.setState({inventories: updatedInventories})
     }
@@ -48,7 +50,7 @@ class InventoryList extends Component {
                         <Button
                         size="sm"
                         color="primary"
-                        tag={link}
+                        tag={Link}
                         to={"/inventories/" + inventory._id}
                         >
                         Edit
@@ -72,7 +74,7 @@ class InventoryList extends Component {
                         <Button
                         color="success"
                         className="my-4"
-                        tag={link}
+                        tag={Link}
                         to="/inventories/new"
                         >
                         Add Inventory

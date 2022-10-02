@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import AppNavbar from "./Navbar"
 import { Button, Container, Form, FormGroup, Input, Label } from "reactstrap";
-import { link, withReact } from "react-router-dom";
-
+import { Link} from "react-router-dom";
+ 
 class InventoryEdit extends Component {
     emptyInventory = {
         prodname: '',
@@ -27,9 +27,9 @@ class InventoryEdit extends Component {
 
     handleChange = (event) => {
         const target= event.target;
-        const value = event.value;
-        const name= event.name;
-        let item= {...this.state.item}
+        const value = target.value;
+        const name= target.name;
+        let item= {...this.state.item};
         item[name]= value;
         this.setState({item});
     }
@@ -50,7 +50,7 @@ class InventoryEdit extends Component {
     }
 
     render () {
-        const {item} = this.state
+        const {item} = this.state;
         const title = 
         <h2 className="mt-3">
             {/* if item has an id number, otherwise */}
@@ -113,7 +113,7 @@ class InventoryEdit extends Component {
                             <Button
                             color="secondary"
                             className="mt-3"
-                            tag={link} to="/inventories"
+                            tag={Link} to="/inventories"
                             >Cancel</Button>
                         </FormGroup>
                     </Form>
@@ -123,4 +123,4 @@ class InventoryEdit extends Component {
     }
 }
 
-export default withRouter(InventoryEdit);
+export default InventoryEdit;
