@@ -18,6 +18,9 @@ class InventoryList extends Component {
 //         .then(res => res.text())        
 //   .then(text => console.log(text))  
         .then(response => response.json())
+        // .then(function (response) {
+        //     return response.json();
+        // })
         .then(data => this.setState({inventories: data, isLoading: false}));
     }
     removeInv = async (id) => {
@@ -36,9 +39,9 @@ class InventoryList extends Component {
     }
     render () {
         const {inventories, isLoading} = this.state;
-        if(isLoading) {
-            return <p>Loading...</p>;
-        }
+        // if(isLoading) {
+        //     return <p>Loading...</p>;
+        // }
         const inventoryList = inventories.map(inventory => {
             return <tr key={inventory._id}>
                 <td style={{whiteSpace: 'nowrap'}}>{inventory.prodname}</td>

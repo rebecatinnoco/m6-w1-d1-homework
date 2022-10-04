@@ -5,6 +5,6 @@ const InventorySchema = new mongoose.Schema({
     qty: Number,
     price: Number,
     status: String
-})
+});
 
 module.exports = mongoose.model('Inventory', InventorySchema);
