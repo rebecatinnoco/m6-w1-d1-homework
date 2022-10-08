@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false);
 const Inventory = mongoose.model('Inventory');
 
 exports.createInventory = (req,res) => {

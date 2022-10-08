@@ -14,14 +14,10 @@ class InventoryList extends Component {
     componentDidMount() {
         this.setState({isLoading: true})
 
-        fetch('/api/inventories')
-//         .then(res => res.text())        
-//   .then(text => console.log(text))  
-        .then(response => response.json())
-        // .then(function (response) {
-        //     return response.json();
-        // })
+        fetch('api/inventories')
+        .then(response =>  response.json())
         .then(data => this.setState({inventories: data, isLoading: false}));
+
     }
     removeInv = async (id) => {
         await fetch(`/api/inventory/${id}`, {
